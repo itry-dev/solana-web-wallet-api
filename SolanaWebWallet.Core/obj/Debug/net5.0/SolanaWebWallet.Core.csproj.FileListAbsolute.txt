@@ -1,0 +1,11 @@
+/Users/m20180207/Lavori/SolanaWebWallet/solana-web-wallet/SolanaWebWallet.Core/bin/Debug/net5.0/SolanaWebWallet.Core.deps.json
+/Users/m20180207/Lavori/SolanaWebWallet/solana-web-wallet/SolanaWebWallet.Core/bin/Debug/net5.0/SolanaWebWallet.Core.dll
+/Users/m20180207/Lavori/SolanaWebWallet/solana-web-wallet/SolanaWebWallet.Core/bin/Debug/net5.0/ref/SolanaWebWallet.Core.dll
+/Users/m20180207/Lavori/SolanaWebWallet/solana-web-wallet/SolanaWebWallet.Core/bin/Debug/net5.0/SolanaWebWallet.Core.pdb
+/Users/m20180207/Lavori/SolanaWebWallet/solana-web-wallet/SolanaWebWallet.Core/obj/Debug/net5.0/SolanaWebWallet.Core.GeneratedMSBuildEditorConfig.editorconfig
+/Users/m20180207/Lavori/SolanaWebWallet/solana-web-wallet/SolanaWebWallet.Core/obj/Debug/net5.0/SolanaWebWallet.Core.AssemblyInfoInputs.cache
+/Users/m20180207/Lavori/SolanaWebWallet/solana-web-wallet/SolanaWebWallet.Core/obj/Debug/net5.0/SolanaWebWallet.Core.AssemblyInfo.cs
+/Users/m20180207/Lavori/SolanaWebWallet/solana-web-wallet/SolanaWebWallet.Core/obj/Debug/net5.0/SolanaWebWallet.Core.csproj.CoreCompileInputs.cache
+/Users/m20180207/Lavori/SolanaWebWallet/solana-web-wallet/SolanaWebWallet.Core/obj/Debug/net5.0/SolanaWebWallet.Core.dll
+/Users/m20180207/Lavori/SolanaWebWallet/solana-web-wallet/SolanaWebWallet.Core/obj/Debug/net5.0/ref/SolanaWebWallet.Core.dll
+/Users/m20180207/Lavori/SolanaWebWallet/solana-web-wallet/SolanaWebWallet.Core/obj/Debug/net5.0/SolanaWebWallet.Core.pdb

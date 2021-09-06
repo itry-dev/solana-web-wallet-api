@@ -1,0 +1,37 @@
+﻿<Properties StartupConfiguration="{01637E03-AD8D-4807-8E43-58288D5B0F69}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Solana.WebWallet.Api/Controllers/AddressesController.cs">
+    <Files>
+      <File FileName="Solana.WebWallet.Api/Controllers/AddressesController.cs" Line="32" Column="18" />
+      <File FileName="Solana.WebWallet.Api/Startup.cs" />
+      <File FileName="Solana.WebWallet.Api/Program.cs" />
+      <File FileName="Solana.WebWallet.Api/Controllers/QrCodeController.cs" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="SolanaWebWallet" expanded="True">
+            <Node name="Solana.WebWallet.Api" expanded="True">
+              <Node name="Controllers" expanded="True">
+                <Node name="AddressesController.cs" selected="True" />
+              </Node>
+              <Node name="Models" expanded="True">
+                <Node name="Out" expanded="True" />
+              </Node>
+            </Node>
+            <Node name="SolanaWebWallet.Core" expanded="True">
+              <Node name="Interfaces" expanded="True" />
+              <Node name="Managers" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.Solana.WebWallet.Api PreferredExecutionTarget="/Applications/Brave Browser.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

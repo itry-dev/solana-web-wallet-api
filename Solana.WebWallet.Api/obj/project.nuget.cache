@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "dgSpecHash": "lFvRNVm5h733/Ce+BysvQ7v0sQn12oxzJeOcgqiK1/KXf3d9J8jOtaW3o0lIVyGgEkmOR2roJ+mYtD0M/ln5yQ==",
+  "success": true,
+  "projectFilePath": "/Users/m20180207/Lavori/SolanaWebWallet/solana-web-wallet/Solana.WebWallet.Api/Solana.WebWallet.Api.csproj",
+  "expectedPackageFiles": [
+    "/Users/m20180207/.nuget/packages/microsoft.extensions.configuration/5.0.0/microsoft.extensions.configuration.5.0.0.nupkg.sha512",
+    "/Users/m20180207/.nuget/packages/microsoft.extensions.configuration.abstractions/5.0.0/microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512",
+    "/Users/m20180207/.nuget/packages/microsoft.extensions.configuration.binder/5.0.0/microsoft.extensions.configuration.binder.5.0.0.nupkg.sha512",
+    "/Users/m20180207/.nuget/packages/microsoft.extensions.dependencyinjection/5.0.0/microsoft.extensions.dependencyinjection.5.0.0.nupkg.sha512",
+    "/Users/m20180207/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/5.0.0/microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
+    "/Users/m20180207/.nuget/packages/microsoft.extensions.logging/5.0.0/microsoft.extensions.logging.5.0.0.nupkg.sha512",
+    "/Users/m20180207/.nuget/packages/microsoft.extensions.logging.abstractions/5.0.0/microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512",
+    "/Users/m20180207/.nuget/packages/microsoft.extensions.logging.configuration/5.0.0/microsoft.extensions.logging.configuration.5.0.0.nupkg.sha512",
+    "/Users/m20180207/.nuget/packages/microsoft.extensions.logging.console/5.0.0/microsoft.extensions.logging.console.5.0.0.nupkg.sha512",
+    "/Users/m20180207/.nuget/packages/microsoft.extensions.options/5.0.0/microsoft.extensions.options.5.0.0.nupkg.sha512",
+    "/Users/m20180207/.nuget/packages/microsoft.extensions.options.configurationextensions/5.0.0/microsoft.extensions.options.configurationextensions.5.0.0.nupkg.sha512",
+    "/Users/m20180207/.nuget/packages/microsoft.extensions.primitives/5.0.0/microsoft.extensions.primitives.5.0.0.nupkg.sha512",
+    "/Users/m20180207/.nuget/packages/microsoft.netcore.platforms/3.1.0/microsoft.netcore.platforms.3.1.0.nupkg.sha512",
+    "/Users/m20180207/.nuget/packages/microsoft.win32.systemevents/4.7.0/microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "/Users/m20180207/.nuget/packages/qrcoder/1.4.1/qrcoder.1.4.1.nupkg.sha512",
+    "/Users/m20180207/.nuget/packages/system.drawing.common/4.7.0/system.drawing.common.4.7.0.nupkg.sha512"
+  ],
+  "logs": []
+}

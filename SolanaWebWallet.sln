@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.810.6
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solana.WebWallet.Api", "Solana.WebWallet.Api\Solana.WebWallet.Api.csproj", "{01637E03-AD8D-4807-8E43-58288D5B0F69}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolanaWebWallet.Core", "SolanaWebWallet.Core\SolanaWebWallet.Core.csproj", "{F78060C7-F26F-4C7E-A08D-74E7B41F04B2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{01637E03-AD8D-4807-8E43-58288D5B0F69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01637E03-AD8D-4807-8E43-58288D5B0F69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01637E03-AD8D-4807-8E43-58288D5B0F69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01637E03-AD8D-4807-8E43-58288D5B0F69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F78060C7-F26F-4C7E-A08D-74E7B41F04B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F78060C7-F26F-4C7E-A08D-74E7B41F04B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F78060C7-F26F-4C7E-A08D-74E7B41F04B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F78060C7-F26F-4C7E-A08D-74E7B41F04B2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BC522C8B-A566-4BDB-8897-61237A5B648B}
+	EndGlobalSection
+EndGlobal
