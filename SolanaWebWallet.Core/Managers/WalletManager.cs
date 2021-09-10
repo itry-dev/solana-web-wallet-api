@@ -7,16 +7,22 @@ using Microsoft.Extensions.Logging;
 using QRCoder;
 using System.Drawing;
 using System.IO;
+using Microsoft.Extensions.Configuration;
+using SolanaWebWallet.Core.Configuration;
 
 namespace SolanaWebWallet.Core.Managers
 {
     public class WalletManager : IWalletManager
     {
         private readonly ILogger<WalletManager> _logger;
+        private readonly IConfiguration _configuration;
+        private readonly SolanaCliConfig _solanaCliConfig = new SolanaCliConfig();
 
-        public WalletManager(ILogger<WalletManager> logger)
+        public WalletManager(ILogger<WalletManager> logger, IConfiguration configuration)
         {
             _logger = logger;
+            _configuration = configuration;
+            configuration.GetSection("SolanaCli").Bind(_solanaCliConfig);
         }
 
         #region GetBalance
@@ -37,7 +43,11 @@ namespace SolanaWebWallet.Core.Managers
 
             _logger.LogDebug(solResponse.response);
 
-            decimal balance = Convert.ToDecimal(solResponse.response.Replace("SOL", "").Trim());
+            decimal balance = Convert.ToDecimal(
+                                solResponse.response.Replace("SOL", "")
+                                .Replace(Environment.NewLine,"")
+                                .Trim()
+                              , new System.Globalization.CultureInfo("en-US"));
 
             return Task.FromResult( (balance, "") );
         }
@@ -81,35 +91,35 @@ namespace SolanaWebWallet.Core.Managers
         #region _getSolanaResponse
         private Task<(string response, int processCode)> _getSolanaResponse(string exeName, string command)
         {
-            var solCmd = $"/Users/m20180207/.local/share/solana/install/active_release/bin/{exeName}";
+            var fi = new FileInfo(_solanaCliConfig.SolanaHome);
+            var solCmd =  $"{exeName}";
 
             var stderr = new StringBuilder();
             var stdout = new StringBuilder();
 
             using Process p = Process.Start(new ProcessStartInfo
             {
-                FileName = "zsh",
-                Arguments = $"-c \"{solCmd} {command}\"",
+                FileName = _solanaCliConfig.OpenWith,
+                WorkingDirectory = fi.DirectoryName,
+                Arguments = $"/c {solCmd} {command}",
                 RedirectStandardOutput = true,
                 RedirectStandardError = true,
                 UseShellExecute = false,
                 CreateNoWindow = true
             });
 
-            _logger.LogDebug($"Executing command -c \"{solCmd} {command}\"");
+            _logger.LogDebug($"Executing command /c {solCmd} {command}");
 
             while (!p.StandardOutput.EndOfStream)
             {
                 string line = p.StandardOutput.ReadLine();
                 stdout.AppendLine(line);
-                //Console.WriteLine(line);
             }
 
             while (!p.StandardError.EndOfStream)
             {
                 string line = p.StandardError.ReadLine();
                 stderr.AppendLine(line);
-                //Console.WriteLine(line);
             }
 
             p.WaitForExit();

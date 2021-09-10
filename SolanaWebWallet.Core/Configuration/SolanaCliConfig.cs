@@ -1,0 +1,15 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SolanaWebWallet.Core.Configuration
+{
+    public class SolanaCliConfig
+    {
+        public string SolanaHome { get; set; }
+
+        public string OpenWith { get; set; }
+    }
+}

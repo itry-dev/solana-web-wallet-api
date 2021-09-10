@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.810.6
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31612.314
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solana.WebWallet.Api", "Solana.WebWallet.Api\Solana.WebWallet.Api.csproj", "{01637E03-AD8D-4807-8E43-58288D5B0F69}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SolanaWebWallet.Api", "SolanaWebWallet.Api\SolanaWebWallet.Api.csproj", "{01637E03-AD8D-4807-8E43-58288D5B0F69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolanaWebWallet.Core", "SolanaWebWallet.Core\SolanaWebWallet.Core.csproj", "{F78060C7-F26F-4C7E-A08D-74E7B41F04B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SolanaWebWallet.Core", "SolanaWebWallet.Core\SolanaWebWallet.Core.csproj", "{F78060C7-F26F-4C7E-A08D-74E7B41F04B2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
