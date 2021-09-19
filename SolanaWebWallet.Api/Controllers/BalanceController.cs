@@ -26,7 +26,7 @@ namespace SolanaWebWallet.Api.Controllers
         public async Task<string> Get([FromQuery] string address)
         {
             var result = await WallterManager.GetBalance(address);
-            return result.balance.ToString();
+            return result.balance.ToString(new System.Globalization.CultureInfo("en-US"));
         }
     }
 }

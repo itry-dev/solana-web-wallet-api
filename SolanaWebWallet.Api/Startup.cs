@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Net.Http.Headers;
+using SolanaWebWallet.Api.Hub;
 using SolanaWebWallet.Core.Configuration;
 using SolanaWebWallet.Core.Exchanges;
 using SolanaWebWallet.Core.Exchanges.Interfaces;
@@ -46,13 +48,17 @@ namespace Solana.WebWallet.Api
                     builder =>
                     {
                         builder.WithOrigins(
-                            "http://localhost:8080"
+                            "http://localhost:8080",
+                            "http://localhost:8080/"
                             /*Configuration.GetSection("CORS").Value.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)*/
                             )
-                        .AllowAnyMethod()
-                        .AllowAnyHeader();
+                        .WithHeaders("X-Requested-With", "X-SignalR-User-Agent")
+                        .WithMethods("GET", "POST")
+                        .AllowCredentials();
                     });
             });
+
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -74,6 +80,7 @@ namespace Solana.WebWallet.Api
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<QuotationHub>("/api/v0/quotation");
             });
 
             
