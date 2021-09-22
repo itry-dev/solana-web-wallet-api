@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.Net.Http.Headers;
-using SolanaWebWallet.Api.Hub;
 using SolanaWebWallet.Core.Configuration;
 using SolanaWebWallet.Core.Exchanges;
 using SolanaWebWallet.Core.Exchanges.Interfaces;
@@ -58,7 +49,6 @@ namespace Solana.WebWallet.Api
                     });
             });
 
-            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -80,7 +70,6 @@ namespace Solana.WebWallet.Api
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                endpoints.MapHub<QuotationHub>("/api/v0/quotation");
             });
 
             

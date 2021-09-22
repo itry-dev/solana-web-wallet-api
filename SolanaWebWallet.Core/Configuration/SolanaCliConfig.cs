@@ -8,6 +8,8 @@ namespace SolanaWebWallet.Core.Configuration
 {
     public class SolanaCliConfig
     {
+        public string AirdropTestUrl { get; set; }
+
         public string SolanaHome { get; set; }
 
         public string OpenWith { get; set; }

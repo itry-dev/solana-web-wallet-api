@@ -17,7 +17,4 @@
     <Folder Include="Models\" />
     <Folder Include="Models\Out\" />
   </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.1.0" />
-  </ItemGroup>
 </Project>

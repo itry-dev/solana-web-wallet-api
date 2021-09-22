@@ -135,5 +135,87 @@ namespace SolanaWebWallet.Core.Managers
 
         }
         #endregion
+
+        #region TrasanctionTest
+        public Task<string> TrasanctionTest()
+        {
+            #region create a temp address
+            Task<(string response, int processCode)> solResponse = _getSolanaResponse("solana-keygen", "new --no-passphrase --no-outfile");
+            solResponse.Wait();
+
+            if (solResponse.IsFaulted)
+            {
+                return Task.FromException<string>(new Exception(solResponse.Exception.Message));
+            }
+            else if (solResponse.Result.processCode != 0)
+            {
+                return Task.FromException<string>(new Exception($"Error code {solResponse.Result.response}"));
+            }
+            #endregion
+
+            //l'indirizzo creato
+            string pubKey = "";
+            var match = System.Text.RegularExpressions.Regex.Match(solResponse.Result.response, "pubkey:\\s[^=]+");
+            if (match.Success)
+            {
+                pubKey = match.Value.Replace("pubkey: ", "").Trim();
+            }
+            //string pubTempKey = System.IO.File.ReadAllText(tmpPath).Replace("pubkey:", String.Empty).Trim();
+
+            #region airdrop to the newly created address
+            solResponse = _getSolanaResponse("solana", $"airdrop 1 {pubKey} --url {_solanaCliConfig.AirdropTestUrl}");
+            solResponse.Wait();
+
+            if (solResponse.IsFaulted)
+            {
+                return Task.FromException<string>(new Exception(solResponse.Exception.Message));
+            }
+            else if (solResponse.Result.processCode != 0)
+            {
+                return Task.FromException<string>(new Exception($"Error code {solResponse.Result.response}"));
+            }
+
+            //airdrop result
+            _logger.LogDebug(solResponse.Result.response);
+            #endregion
+
+            #region checking sol balance
+            solResponse = _getSolanaResponse("solana", $"balance {pubKey} --url {_solanaCliConfig.AirdropTestUrl}");
+            solResponse.Wait();
+
+            if (solResponse.IsFaulted)
+            {
+                return Task.FromException<string>(new Exception(solResponse.Exception.Message));
+            }
+            else if (solResponse.Result.processCode != 0)
+            {
+                return Task.FromException<string>(new Exception($"Error code {solResponse.Result.response}"));
+            }
+            //balance result
+            _logger.LogDebug(solResponse.Result.response); 
+            #endregion
+
+            return Task.FromResult(solResponse.Result.response.Replace("SOL", "").Trim());
+        }
+        #endregion
+
+        #region SendTokens
+        public Task<string> SendTokens(string fromAddress, string toAddress, decimal amount)
+        {
+            Task<(string response, int processCode)> solResponse = _getSolanaResponse("solana", $"transfer --from {fromAddress} {toAddress} {amount} --fee-payer {fromAddress}");
+            solResponse.Wait();
+
+            if (solResponse.IsFaulted)
+            {
+                return Task.FromException<string>(new Exception(solResponse.Exception.Message));
+            }
+            else if (solResponse.Result.processCode != 0)
+            {
+                return Task.FromException<string>(new Exception($"Error code {solResponse.Result.response}"));
+            }
+
+            return Task.FromResult(solResponse.Result.response);
+        }
+        #endregion
     }
 }
