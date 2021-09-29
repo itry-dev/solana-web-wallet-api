@@ -17,11 +17,11 @@ namespace SolanaWebWallet.Core.Interfaces
         Task<byte[]> GetQrCodeAddress(string text);
 
         /// <summary>
-        /// A fake transaction to test you indeed are able to receive sol.
+        /// A fake transaction to test you indeed hold the corresponding private key. It returns the number of sol getted, usually 1.
         /// </summary>
-        /// <param name="addressFrom"></param>
+        /// <param name="pubKey"></param>
         /// <returns></returns>
-        Task<string> TrasanctionTest();
+        Task<string> TrasanctionTest(string pubKey);
 
         /// <summary>
         /// Send the specified amount to the indicated address.
@@ -31,5 +31,11 @@ namespace SolanaWebWallet.Core.Interfaces
         /// <param name="amount"></param>
         /// <returns></returns>
         Task<string> SendTokens(string fromAddress, string toAddress, decimal amount);
+
+        /// <summary>
+        /// Get the address at specified index or error if something went wrong.
+        /// </summary>
+        /// <returns></returns>
+        Task<(string address, string error)> GetAddressAtIndex(int index);
     }
 }

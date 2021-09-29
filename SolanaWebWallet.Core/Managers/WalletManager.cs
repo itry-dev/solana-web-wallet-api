@@ -56,16 +56,7 @@ namespace SolanaWebWallet.Core.Managers
         #region GetMainAddress
         public Task<(string address, string error)> GetMainAddress()
         {
-            var solResponse = _getSolanaResponse("solana-keygen", "pubkey usb://ledger").GetAwaiter();
-
-            var solResult = solResponse.GetResult();
-
-            if (solResult.processCode != 0)
-            {
-                return Task.FromException<(string,string)>( new Exception(solResult.response) );
-            }
-
-            return Task.FromResult( (solResult.response,String.Empty) );
+            return GetAddressAtIndex(0);
         }
         #endregion
 
@@ -136,34 +127,30 @@ namespace SolanaWebWallet.Core.Managers
         }
         #endregion
 
-        #region TrasanctionTest
-        public Task<string> TrasanctionTest()
+        #region GetAddressAtIndex
+        public Task<(string address, string error)> GetAddressAtIndex(int index)
         {
-            #region create a temp address
-            Task<(string response, int processCode)> solResponse = _getSolanaResponse("solana-keygen", "new --no-passphrase --no-outfile");
-            solResponse.Wait();
+            if (index < 0) index = 0;
 
-            if (solResponse.IsFaulted)
-            {
-                return Task.FromException<string>(new Exception(solResponse.Exception.Message));
-            }
-            else if (solResponse.Result.processCode != 0)
-            {
-                return Task.FromException<string>(new Exception($"Error code {solResponse.Result.response}"));
-            }
-            #endregion
+            var solResponse = _getSolanaResponse("solana-keygen", "pubkey usb://ledger" + (index == 0 ? "" : "?key=" + index))
+                                .ConfigureAwait(false)
+                                .GetAwaiter()
+                                .GetResult();
 
-            //l'indirizzo creato
-            string pubKey = "";
-            var match = System.Text.RegularExpressions.Regex.Match(solResponse.Result.response, "pubkey:\\s[^=]+");
-            if (match.Success)
+            if (solResponse.processCode != 0)
             {
-                pubKey = match.Value.Replace("pubkey: ", "").Trim();
+                return Task.FromException<(string, string)>(new Exception(solResponse.response));
             }
-            //string pubTempKey = System.IO.File.ReadAllText(tmpPath).Replace("pubkey:", String.Empty).Trim();
 
+            return Task.FromResult((solResponse.response, String.Empty));
+        }
+        #endregion
+
+        #region TrasanctionTest
+        public Task<string> TrasanctionTest(string pubKey)
+        {
             #region airdrop to the newly created address
-            solResponse = _getSolanaResponse("solana", $"airdrop 1 {pubKey} --url {_solanaCliConfig.AirdropTestUrl}");
+            var solResponse = _getSolanaResponse("solana", $"airdrop 1 {pubKey} --url {_solanaCliConfig.AirdropTestUrl}");
             solResponse.Wait();
 
             if (solResponse.IsFaulted)

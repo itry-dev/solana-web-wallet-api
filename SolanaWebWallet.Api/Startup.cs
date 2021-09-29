@@ -40,7 +40,7 @@ namespace Solana.WebWallet.Api
                     {
                         builder.WithOrigins(
                             "http://localhost:8080",
-                            "http://localhost:8080/"
+                            "https://localhost:8080/"
                             /*Configuration.GetSection("CORS").Value.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)*/
                             )
                         .WithHeaders("X-Requested-With", "X-SignalR-User-Agent")
