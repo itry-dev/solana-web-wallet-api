@@ -17,5 +17,7 @@ namespace SolanaWebWallet.Core.Configuration
         public string CarriesOutCommand { get; set; }
 
         public string Delimiter { get; set; }
+
+        public bool UseWorkingDirectory { get; set; }
     }
 }

@@ -87,17 +87,32 @@ namespace SolanaWebWallet.Core.Managers
             var stderr = new StringBuilder();
             var stdout = new StringBuilder();
 
-            var args = $"{_solanaCliConfig.CarriesOutCommand} {_solanaCliConfig.Delimiter}{_solanaCliConfig.SolanaHome}/{exeName} {command}{_solanaCliConfig.Delimiter}";
+            var args = "";
 
-            using Process p = Process.Start(new ProcessStartInfo
+            var pInfo = new ProcessStartInfo
             {
                 FileName = _solanaCliConfig.OpenWith,
-                Arguments = args,
                 RedirectStandardOutput = true,
                 RedirectStandardError = true,
                 UseShellExecute = false,
                 CreateNoWindow = true
-            });
+            };
+
+            //TODO fix it
+            //a distinction is made between windows os and mac os, the latter ignores workingdirectory settings
+            if (_solanaCliConfig.UseWorkingDirectory)
+            {
+                pInfo.WorkingDirectory = fi.DirectoryName;
+                args = $"{_solanaCliConfig.CarriesOutCommand} {_solanaCliConfig.Delimiter}{exeName} {command}{_solanaCliConfig.Delimiter}";
+            }
+            else
+            {
+                args = $"{_solanaCliConfig.CarriesOutCommand} {_solanaCliConfig.Delimiter}{_solanaCliConfig.SolanaHome}/{exeName} {command}{_solanaCliConfig.Delimiter}";
+            }
+
+            pInfo.Arguments = args;
+
+            using Process p = Process.Start(pInfo);
 
             _logger.LogDebug($"Executing command {args}");
 
