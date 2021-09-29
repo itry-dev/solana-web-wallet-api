@@ -24,11 +24,11 @@ namespace SolanaWebWallet.Api.Controllers
         [Route("TransactionTest")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<string>> TransactionTest()
+        public async Task<ActionResult<string>> TransactionTest([FromQuery] string pubKey)
         {
             try
             {
-                var result = await WallterManager.TrasanctionTest();
+                var result = await WallterManager.TrasanctionTest(pubKey);
                 return Ok(result);
 
             }
