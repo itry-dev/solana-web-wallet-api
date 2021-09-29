@@ -13,5 +13,9 @@ namespace SolanaWebWallet.Core.Configuration
         public string SolanaHome { get; set; }
 
         public string OpenWith { get; set; }
+
+        public string CarriesOutCommand { get; set; }
+
+        public string Delimiter { get; set; }
     }
 }

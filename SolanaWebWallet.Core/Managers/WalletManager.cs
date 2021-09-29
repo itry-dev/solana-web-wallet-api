@@ -83,23 +83,23 @@ namespace SolanaWebWallet.Core.Managers
         private Task<(string response, int processCode)> _getSolanaResponse(string exeName, string command)
         {
             var fi = new FileInfo(_solanaCliConfig.SolanaHome);
-            var solCmd =  $"{exeName}";
 
             var stderr = new StringBuilder();
             var stdout = new StringBuilder();
 
+            var args = $"{_solanaCliConfig.CarriesOutCommand} {_solanaCliConfig.Delimiter}{_solanaCliConfig.SolanaHome}/{exeName} {command}{_solanaCliConfig.Delimiter}";
+
             using Process p = Process.Start(new ProcessStartInfo
             {
                 FileName = _solanaCliConfig.OpenWith,
-                WorkingDirectory = fi.DirectoryName,
-                Arguments = $"/c {solCmd} {command}",
+                Arguments = args,
                 RedirectStandardOutput = true,
                 RedirectStandardError = true,
                 UseShellExecute = false,
                 CreateNoWindow = true
             });
 
-            _logger.LogDebug($"Executing command /c {solCmd} {command}");
+            _logger.LogDebug($"Executing command {args}");
 
             while (!p.StandardOutput.EndOfStream)
             {
