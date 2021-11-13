@@ -22,6 +22,11 @@ namespace SolanaWebWallet.Api.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// Balance of the main address wallet.
+        /// </summary>
+        /// <param name="address"></param>
+        /// <returns></returns>
         [HttpGet]
         public async Task<string> Get([FromQuery] string address)
         {

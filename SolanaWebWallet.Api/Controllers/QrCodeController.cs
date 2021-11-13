@@ -22,6 +22,11 @@ namespace SolanaWebWallet.Api.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// Get the QR Code of the main wallet address.
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
