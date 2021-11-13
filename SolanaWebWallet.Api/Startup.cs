@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using SolanaWebWallet.Core.Configuration;
 using SolanaWebWallet.Core.Exchanges;
 using SolanaWebWallet.Core.Exchanges.Interfaces;
@@ -28,9 +29,21 @@ namespace Solana.WebWallet.Api
         {
             services.AddScoped<ICryptoProviderFactory, CryptoProviderFactory>();
 
-            services.Configure<SolanaCliConfig>(Configuration.GetSection("SolanaCli"));
+            services.AddScoped<IWalletManager, WalletManager>(fn =>
+            {
+                SolanaCliConfig solanCli = new SolanaCliConfig();
+                if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Windows))
+                {
+                    Configuration.GetSection("WinSolanaCli").Bind(solanCli);
+                }
+                else
+                {
+                    //2021-11-13 only windows / osx supported at the moment
+                    Configuration.GetSection("OSXSolanaCli").Bind(solanCli);
 
-            services.AddScoped<IWalletManager, WalletManager>();
+                }
+                return new WalletManager(fn.GetRequiredService<ILogger<WalletManager>>(), Configuration, solanCli);
+            });
             services.AddControllers();
 
             services.AddCors(options =>
@@ -51,7 +64,6 @@ namespace Solana.WebWallet.Api
 
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

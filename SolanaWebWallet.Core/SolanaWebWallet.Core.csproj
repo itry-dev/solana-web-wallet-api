@@ -13,7 +13,6 @@
   <ItemGroup>
     <Folder Include="Exchanges\Kucoin\" />
     <Folder Include="Managers\" />
-    <Folder Include="Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="5.0.0" />

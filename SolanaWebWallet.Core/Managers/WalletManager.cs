@@ -9,6 +9,7 @@ using System.Drawing;
 using System.IO;
 using Microsoft.Extensions.Configuration;
 using SolanaWebWallet.Core.Configuration;
+using Microsoft.Extensions.Options;
 
 namespace SolanaWebWallet.Core.Managers
 {
@@ -18,11 +19,11 @@ namespace SolanaWebWallet.Core.Managers
         private readonly IConfiguration _configuration;
         private readonly SolanaCliConfig _solanaCliConfig = new SolanaCliConfig();
 
-        public WalletManager(ILogger<WalletManager> logger, IConfiguration configuration)
+        public WalletManager(ILogger<WalletManager> logger, IConfiguration configuration, SolanaCliConfig solanaConfig)
         {
             _logger = logger;
             _configuration = configuration;
-            configuration.GetSection("SolanaCli").Bind(_solanaCliConfig);
+            _solanaCliConfig = solanaConfig;
         }
 
         #region GetBalance
