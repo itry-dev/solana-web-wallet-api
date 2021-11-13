@@ -31,18 +31,18 @@ namespace Solana.WebWallet.Api
 
             services.AddScoped<IWalletManager, WalletManager>(fn =>
             {
-                SolanaCliConfig solanCli = new SolanaCliConfig();
+                SolanaCliConfig solanaCli = new SolanaCliConfig();
                 if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Windows))
                 {
-                    Configuration.GetSection("WinSolanaCli").Bind(solanCli);
+                    Configuration.GetSection("WinSolanaCli").Bind(solanaCli);
                 }
                 else
                 {
                     //2021-11-13 only windows / osx supported at the moment
-                    Configuration.GetSection("OSXSolanaCli").Bind(solanCli);
+                    Configuration.GetSection("OSXSolanaCli").Bind(solanaCli);
 
                 }
-                return new WalletManager(fn.GetRequiredService<ILogger<WalletManager>>(), Configuration, solanCli);
+                return new WalletManager(fn.GetRequiredService<ILogger<WalletManager>>(), Configuration, solanaCli);
             });
             services.AddControllers();
 

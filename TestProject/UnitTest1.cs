@@ -2,6 +2,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using Moq;
+using SolanaWebWallet.Core.Configuration;
 using SolanaWebWallet.Core.Interfaces;
 using SolanaWebWallet.Core.Managers;
 using System;
@@ -27,8 +28,19 @@ namespace TestProject
             if (_walletManager != null) return _walletManager;
 
             var mock = new Mock<ILogger<WalletManager>>();
+            var solanaCli = new SolanaCliConfig();
+            if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Windows))
+            {
+                _config.GetSection("WinSolanaCli").Bind(solanaCli);
+            }
+            else
+            {
+                //2021-11-13 only windows / osx supported at the moment
+                _config.GetSection("OSXSolanaCli").Bind(solanaCli);
 
-            _walletManager = new WalletManager(mock.Object, _config);
+            }
+
+            _walletManager = new WalletManager(mock.Object, _config, solanaCli);
 
             return _walletManager;
         }
