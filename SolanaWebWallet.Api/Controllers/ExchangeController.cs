@@ -27,7 +27,7 @@ namespace SolanaWebWallet.Api.Controllers
         }
 
         /// <summary>
-        /// Using CoinGeko API get the quotation from Coinbase, Binance and KuCoin exchagens.
+        /// Using CoinGecko API get the quotation from Coinbase, Binance and KuCoin exchagens.
         /// </summary>
         /// <param name="symbol"></param>
         /// <param name="exchanges"></param>

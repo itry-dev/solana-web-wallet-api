@@ -20,6 +20,10 @@ namespace SolanaWebWallet.Api.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// Get the wallet main address.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("main")]
         public async Task<ActionResult<string>> Get()
